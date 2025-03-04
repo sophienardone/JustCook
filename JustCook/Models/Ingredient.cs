@@ -15,3 +15,4 @@ namespace JustCook.Models
         public ICollection<RecipeIngredient> RecipeIngredients { get; set; } = new List<RecipeIngredient>();
     }
 }
+

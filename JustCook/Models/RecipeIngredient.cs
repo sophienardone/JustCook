@@ -20,3 +20,4 @@ namespace JustCook.Models
         public Ingredient? Ingredient { get; set; }
     }
 }
+

@@ -22,3 +22,4 @@ namespace JustCook.Models
         public ICollection<Rating> Ratings { get; set; } = new List<Rating>();
     }
 }
+

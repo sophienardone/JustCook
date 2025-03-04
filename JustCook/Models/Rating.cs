@@ -21,3 +21,4 @@ namespace JustCook.Models
         public User? User { get; set; }
     }
 }
+
