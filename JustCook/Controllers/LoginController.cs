@@ -33,7 +33,16 @@ namespace JustCook.Controllers
                 claim.Value
             });
 
-            return Json(claims);
+            //return Json(claims);
+
+            return RedirectToAction("Index", "Home", new {area=""});
+
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Home");
         }
     }
 }
