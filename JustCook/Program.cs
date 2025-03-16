@@ -21,6 +21,9 @@ builder.Services.AddAuthentication(options =>
     {
         options.ClientId = builder.Configuration["Authentication:Google:ClientId"];
         options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+        // Google won't let me change the Authorized redirect URIs
+        // So i have to use callback path to change it 
+        options.CallbackPath = "/signin";
     });
 
 // Add services to the container.
