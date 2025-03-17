@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JustCook.Models
 {
@@ -8,11 +8,10 @@ namespace JustCook.Models
         [Key]
         public int IngredientId { get; set; }
 
-        [Required]
-        [MaxLength(100)]
+        [Required(ErrorMessage = "Ingredient name is required.")]
+        [MaxLength(100, ErrorMessage = "Ingredient name cannot exceed 100 characters.")]
         public string? Name { get; set; }
 
         public ICollection<RecipeIngredient> RecipeIngredients { get; set; } = new List<RecipeIngredient>();
     }
 }
-

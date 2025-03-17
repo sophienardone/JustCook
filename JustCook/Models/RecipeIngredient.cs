@@ -1,16 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JustCook.Models
 {
     public class RecipeIngredient
     {
-        [Key]
+        // Composite keys are configured via Fluent API in DbContext.
+        [Required(ErrorMessage = "Recipe Id is required.")]
         public int RecipeId { get; set; }
 
-        [Key]
+        [Required(ErrorMessage = "Ingredient Id is required.")]
         public int IngredientId { get; set; }
 
+        [Required(ErrorMessage = "Quantity is required.")]
+        [MaxLength(50, ErrorMessage = "Quantity cannot exceed 50 characters.")]
         public string? Quantity { get; set; }
 
         [ForeignKey("RecipeId")]
@@ -20,4 +23,3 @@ namespace JustCook.Models
         public Ingredient? Ingredient { get; set; }
     }
 }
-

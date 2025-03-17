@@ -7,11 +7,13 @@ namespace JustCook.Models
         [Key]
         public string? Id { get; set; }
 
-        [Required]
-        [MaxLength(100)]
+        [Required(ErrorMessage = "Username is required.")]
+        [MaxLength(100, ErrorMessage = "Username cannot exceed 100 characters.")]
         public string? UserName { get; set; }
 
-        [MaxLength(100)]
+        [Required(ErrorMessage = "Email is required.")]
+        [MaxLength(100, ErrorMessage = "Email cannot exceed 100 characters.")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address.")]
         public string? Email { get; set; }
 
         public string? PasswordHash { get; set; }
@@ -22,4 +24,3 @@ namespace JustCook.Models
         public ICollection<Rating> Ratings { get; set; } = new List<Rating>();
     }
 }
-

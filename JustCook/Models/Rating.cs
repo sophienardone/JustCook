@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JustCook.Models
 {
@@ -8,7 +8,8 @@ namespace JustCook.Models
         [Key]
         public int RatingId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Rating value is required.")]
+        [Range(1, 5, ErrorMessage = "Rating must be between 1 and 5.")]
         public int Value { get; set; }
 
         [ForeignKey("Recipe")]
@@ -21,4 +22,3 @@ namespace JustCook.Models
         public User? User { get; set; }
     }
 }
-
