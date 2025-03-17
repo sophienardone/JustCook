@@ -2,13 +2,6 @@
     ViewData["Title"] = "Home";
 }
 
-@if (User.Identity.IsAuthenticated)
-{
-    <div class="text-center mb-4">
-        <h2>Hello, @User.Identity.Name!</h2>
-    </div>
-}
-
 <div class="jumbotron text-center my-5">
     <h1 class="display-4">Welcome to JustCook!</h1>
     <p class="lead">JustCook is your one-stop solution for managing, discovering, and sharing amazing recipes.</p>
