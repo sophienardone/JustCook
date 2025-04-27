@@ -1,18 +1,18 @@
 using JustCook.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
-using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
-// — MVC & EF Core —
+// ï¿½ MVC & EF Core ï¿½
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<RecipesDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
         ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))));
 
-// — Session setup —  
+// ï¿½ Session setup ï¿½  
 builder.Services.AddDistributedMemoryCache();                            // required for session :contentReference[oaicite:3]{index=3}  
 builder.Services.AddSession(options =>
 {
@@ -21,7 +21,7 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-// — Authentication (cookies + Google + Microsoft) —
+// ï¿½ Authentication (cookies + Google + Microsoft) ï¿½
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -40,9 +40,24 @@ builder.Services.AddAuthentication(options =>
     options.ClientSecret = builder.Configuration["Authentication:Microsoft:ClientSecret"];
 });
 
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<RecipesDbContext>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
+   ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))));
+
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+    });
+
+
+
 var app = builder.Build();
 
-// — Middleware pipeline —  
+// ï¿½ Middleware pipeline ï¿½  
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -63,3 +78,4 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
