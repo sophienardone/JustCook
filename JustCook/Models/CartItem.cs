@@ -3,8 +3,8 @@
     public class CartItem
     {
         public int CartItemId { get; set; }
-        public int BookId { get; set; }
-        public CookBook? Book { get; set; }
+        public int ProductId { get; set; }
+        public Product? Product { get; set; }
         public int Quantity { get; set; }
         public decimal UnitPrice { get; set; }
     }

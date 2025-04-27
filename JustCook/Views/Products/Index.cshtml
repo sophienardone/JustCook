@@ -1,0 +1,28 @@
+﻿@model IEnumerable<JustCook.Models.Product>
+
+@{
+    ViewData["Title"] = "Shop";
+}
+
+<div class="container my-4">
+    <h1>Shop</h1>
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img class="card-img-top" alt="@product.Name" />
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">@product.Name</h5>
+                        <p class="card-text">@product.Description</p>
+                        <p class="mt-auto"><strong>@product.Price.ToString("C")</strong></p>
+                        <form asp-action="AddToCart" method="post">
+                            <input type="hidden" name="productId" value="@product.ProductId" />
+                            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

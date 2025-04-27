@@ -1,0 +1,38 @@
+﻿@model JustCook.Models.Cart
+
+@{
+    ViewData["Title"] = "Shopping Cart";
+}
+
+<div class="container my-4">
+    <h1>Shopping Cart</h1>
+    @if (Model.Items.Any())
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Unit Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Items)
+                {
+                    <tr>
+                        <td>@item.Product.Name</td>
+                        <td>@item.UnitPrice.ToString("C")</td>
+                        <td>@item.Quantity</td>
+                        <td>@(item.UnitPrice * item.Quantity).ToString("C")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <h3>Total: @Model.Total.ToString("C")</h3>
+    }
+    else
+    {
+        <p>Your shopping cart is empty.</p>
+    }
+</div>

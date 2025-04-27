@@ -2,10 +2,10 @@
 
 namespace JustCook.Models
 {
-    public class CookBook
+    public class Product
     {
         [Key]
-        public int BookId { get; set; }
+        public int ProductId { get; set; }
 
         [Required(ErrorMessage = "Product name is required.")]
         [MaxLength(100)]
