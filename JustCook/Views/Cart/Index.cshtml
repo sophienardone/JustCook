@@ -1,38 +1,40 @@
 ﻿@model JustCook.Models.Cart
 
-@{
-    ViewData["Title"] = "Shopping Cart";
-}
+<h1>Your Cart</h1>
 
-<div class="container my-4">
-    <h1>Shopping Cart</h1>
-    @if (Model.Items.Any())
-    {
-        <table class="table table-striped">
-            <thead>
+@if (Model.Items.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
                 <tr>
-                    <th>Product</th>
-                    <th>Unit Price</th>
-                    <th>Quantity</th>
-                    <th>Subtotal</th>
+                    <td>@item.Product.Name</td>
+                    <td>@item.UnitPrice.ToString("C")</td>
+                    <td>@item.Quantity</td>
+                    <td>@(item.UnitPrice * item.Quantity).ToString("C")</td>
+                    <td>
+                        <form asp-action="RemoveFromCart" method="post">
+                            <input type="hidden" name="productId" value="@item.ProductId" />
+                            <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                        </form>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.Items)
-                {
-                    <tr>
-                        <td>@item.Product.Name</td>
-                        <td>@item.UnitPrice.ToString("C")</td>
-                        <td>@item.Quantity</td>
-                        <td>@(item.UnitPrice * item.Quantity).ToString("C")</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-        <h3>Total: @Model.Total.ToString("C")</h3>
-    }
-    else
-    {
-        <p>Your shopping cart is empty.</p>
-    }
-</div>
+            }
+        </tbody>
+    </table>
+    <h3>Total: @Model.Total.ToString("C")</h3>
+}
+else
+{
+    <p>Your cart is empty.</p>
+}

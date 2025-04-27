@@ -74,6 +74,19 @@ namespace JustCook.Controllers
 
                 return RedirectToAction("Index");
             }
+            [HttpPost]
+            public IActionResult RemoveFromCart(int productId)
+            {
+                var cart = GetCart();
+                // Remove the matching item
+                var item = cart.Items.FirstOrDefault(i => i.ProductId == productId);
+                if (item != null)
+                {
+                    cart.Items.Remove(item);
+                    SaveCart(cart);
+                }
+                return RedirectToAction("Index");
+            }
         }
     }
 }
