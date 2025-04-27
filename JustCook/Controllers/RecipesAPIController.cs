@@ -8,11 +8,7 @@ namespace JustCook.Controllers
     [ApiController]
     public class RecipesAPIController : ControllerBase
     {
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
-
+        
         private readonly RecipesDbContext _context;
 
         public RecipesAPIController(RecipesDbContext context)
@@ -20,6 +16,8 @@ namespace JustCook.Controllers
             _context = context;
         }
 
+
+        // get all recipes
         [HttpGet]
         public async Task<IActionResult> GetRecipes()
         {
@@ -27,6 +25,8 @@ namespace JustCook.Controllers
             return Ok(recipes);
         }
 
+
+        //get a recipe by a specific id 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetRecipeById(int id)
         {
@@ -38,6 +38,8 @@ namespace JustCook.Controllers
             return Ok(recipe);
         }
 
+
+        //Add a new recipe
         [HttpPost]
         public async Task<ActionResult<Recipe>> PostRecipe([FromBody] Recipe recipe)
         {
@@ -46,7 +48,7 @@ namespace JustCook.Controllers
                 return BadRequest();
             }
 
-            // Set CreatedAt to now if you want (optional)
+            
             recipe.CreatedAt = DateTime.UtcNow;
 
             _context.Recipes.Add(recipe);
@@ -55,6 +57,8 @@ namespace JustCook.Controllers
             return CreatedAtAction(nameof(GetRecipeById), new { id = recipe.RecipeId }, recipe);
         }
 
+
+        //update an exisiting recipe
         [HttpPut("{id}")]
         public async Task<IActionResult> PutRecipe(int id, [FromBody] Recipe updatedRecipe)
         {
@@ -74,7 +78,7 @@ namespace JustCook.Controllers
             existingRecipe.Description = updatedRecipe.Description;
             existingRecipe.ImageUrl = updatedRecipe.ImageUrl;
             existingRecipe.UserId = updatedRecipe.UserId;
-            // 🔥 Keep existingRecipe.CreatedAt as it is (don't touch it)
+            
 
             await _context.SaveChangesAsync();
 
@@ -83,7 +87,7 @@ namespace JustCook.Controllers
 
 
 
-        // DELETE: api/RecipesApi/5
+        // delete a recipe
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRecipe(int id)
         {
