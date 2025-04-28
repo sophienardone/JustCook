@@ -2,13 +2,17 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using JustCook.Models;
+
 
 namespace JustCook.Controllers
 {
     public class LoginController : Controller
     {
+
         [HttpGet]
         public IActionResult Index()
         {
@@ -43,11 +47,19 @@ namespace JustCook.Controllers
 
         }
 
+        //public async Task<IActionResult> Logout()
+        //{
+        //    await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        //    return RedirectToAction("Index", "Home");
+        //}
+
         public async Task<IActionResult> Logout()
         {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            await HttpContext.SignOutAsync(); 
+            HttpContext.Session.Clear();      
             return RedirectToAction("Index", "Home");
         }
+
         public async Task LoginWithMicrosoft()
         {
             await HttpContext.ChallengeAsync(MicrosoftAccountDefaults.AuthenticationScheme,
@@ -71,7 +83,7 @@ namespace JustCook.Controllers
             var name = claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
             var microsoftId = claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
 
-            // Handle user persistence in your database as needed
+            
 
             // Sign in the user with a cookie
             var identity = new ClaimsIdentity(result.Principal.Claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -80,5 +92,13 @@ namespace JustCook.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+
+       
+
+       
+
+
+       
     }
 }
