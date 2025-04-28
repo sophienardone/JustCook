@@ -6,13 +6,13 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// � MVC & EF Core �
+// MVC & EF Core
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<RecipesDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
         ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))));
 
-// � Session setup �  
+// Session setup 
 builder.Services.AddDistributedMemoryCache();                            // required for session :contentReference[oaicite:3]{index=3}  
 builder.Services.AddSession(options =>
 {
@@ -21,7 +21,7 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-// � Authentication (cookies + Google + Microsoft) �
+// Authentication (cookies + Google + Microsoft) 
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -57,7 +57,7 @@ builder.Services.AddControllers()
 
 var app = builder.Build();
 
-// � Middleware pipeline �  
+// Middleware pipeline 
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
