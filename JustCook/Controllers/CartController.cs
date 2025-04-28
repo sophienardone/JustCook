@@ -44,8 +44,7 @@ namespace JustCook.Controllers
             [HttpPost]
             public IActionResult AddToCart(int productId, int quantity = 1)
             {
-                // For now, assume product details (e.g. price) are hardcoded or retrieved from the DB.
-                // For example, assume you have a cookbook product:
+
                 var cookbook = new Product
                 {
                     ProductId = productId,
@@ -78,7 +77,6 @@ namespace JustCook.Controllers
             public IActionResult RemoveFromCart(int productId)
             {
                 var cart = GetCart();
-                // Remove the matching item
                 var item = cart.Items.FirstOrDefault(i => i.ProductId == productId);
                 if (item != null)
                 {

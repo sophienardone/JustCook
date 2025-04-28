@@ -6,11 +6,11 @@ namespace JustCook.Controllers
 {
     public class ProductsController : Controller
     {
-        // Normally you’d inject a DbContext or service; here we show a hard-coded list for demo.
+        // Normally you’d inject a DbContext or service here we show a hard-coded list for demo.
         private static readonly List<Product> _products = new List<Product>
         {
             new Product { ProductId = 1, Name = "The Ultimate Cookbook", Description = "Our best recipes in one volume", Price = 29.99M }
-            // Later you can add more products here
+
         };
 
         public IActionResult Index()
