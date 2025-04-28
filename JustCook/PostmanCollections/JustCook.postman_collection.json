@@ -1,0 +1,326 @@
+{
+	"info": {
+		"_postman_id": "c5033168-c5c9-4e58-9127-253b03b5a395",
+		"name": "JustCook",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41301185"
+	},
+	"item": [
+		{
+			"name": "RecipesController",
+			"item": [
+				{
+					"name": "Get all Recipes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "JuStCoOkiNG123",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7125/api/RecipesAPI",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7125",
+							"path": [
+								"api",
+								"RecipesAPI"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a recipe by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "JuStCoOkiNG123",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7125/api/RecipesAPI/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7125",
+							"path": [
+								"api",
+								"RecipesAPI",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a new recipe",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "JuStCoOkiNG123",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Lasagna\",\r\n    \"description\": \"A delicious Italian dish with layers of pasta, cheese, and meat sauce.\",\r\n    \"imageUrl\": \"https://tse2.mm.bing.net/th?id=OIP.4cEkCH2sVJfNw4t-rdMUigHaE8&pid=Api&P=0&h=180\",\r\n    \"createdAt\": \"2025-03-30T14:00:00\",\r\n    \"userId\": \"user-1\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7125/api/RecipesAPI",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7125",
+							"path": [
+								"api",
+								"RecipesAPI"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a recipe",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"recipeId\": 6,    \r\n    \"title\": \"Lasagna al forno\",\r\n    \"description\": \"Updated description\",\r\n    \"imageUrl\": \"https://tse2.mm.bing.net/th?id=OIP.4cEkCH2sVJfNw4t-rdMUigHaE8&pid=Api&P=0&h=180\",\r\n    \"createdAt\": \"2025-03-30T14:00:00\",\r\n    \"userId\": \"user-1\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7125/api/RecipesApi/6",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7125",
+							"path": [
+								"api",
+								"RecipesApi",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a recipe",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7125/api/RecipesApi/6",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7125",
+							"path": [
+								"api",
+								"RecipesApi",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UsersController",
+			"item": [
+				{
+					"name": "Get all users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "JuStCoOkiNG123",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7125/api/UsersAPI",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7125",
+							"path": [
+								"api",
+								"UsersAPI"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user by specific id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "JuStCoOkiNG123",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7125/api/UsersAPI/user-1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7125",
+							"path": [
+								"api",
+								"UsersAPI",
+								"user-1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "JuStCoOkiNG123",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"user-2\",\r\n    \"userName\": \"James\",\r\n    \"email\": \"james123@gmail.com\",\r\n    \"passwordHash\": \"hashedpassword2\",\r\n    \"registrationDate\": \"2025-04-27T10:00:00\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7125/api/UsersAPI\n",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7125",
+							"path": [
+								"api",
+								"UsersAPI\n"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "JuStCoOkiNG123",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"user-2\",\r\n    \"userName\": \"James\",\r\n    \"email\": \"newjames23@gmail.com\",\r\n    \"passwordHash\": \"hashedpassword2\",\r\n    \"registrationDate\": \"2025-04-27T10:00:00\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7125/api/UsersApi/user-2\n",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7125",
+							"path": [
+								"api",
+								"UsersApi",
+								"user-2\n"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a user",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "JuStCoOkiNG123",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7125/api/UsersApi/user-2\n?",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7125",
+							"path": [
+								"api",
+								"UsersApi",
+								"user-2\n"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
