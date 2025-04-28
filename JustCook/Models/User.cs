@@ -5,7 +5,7 @@ namespace JustCook.Models
     public class User
     {
         [Key]
-        public string? Id { get; set; }
+        public string? Id { get; set; } = Guid.NewGuid().ToString();
 
         [Required(ErrorMessage = "Username is required.")]
         [MaxLength(100, ErrorMessage = "Username cannot exceed 100 characters.")]
