@@ -1,0 +1,9 @@
+﻿@{
+    ViewData["Title"] = "Order Placed";
+}
+<div class="alert alert-success my-4">
+    <h2>Thank you, @ViewBag.Name!</h2>
+    <p>Your order totaling @ViewBag.Total.ToString("C") has been placed and will be shipped to:</p>
+    <address>@ViewBag.Address</address>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Continue Shopping</a>
+</div>

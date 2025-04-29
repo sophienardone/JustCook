@@ -2,6 +2,56 @@
 
 <h1>Your Cart</h1>
 
+<style>
+    .cart-container {
+        margin: 2rem auto;
+        max-width: 800px;
+        background: #fff; 
+        border-radius: 1rem; 
+        padding: 1.5rem;
+        box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.1); 
+    }
+
+ 
+        .cart-container table thead th {
+            background-color: #ff6b6b; 
+            color: #fff;
+            border-color: #ff6b6b; 
+        }
+
+        .cart-container table.table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(255,107,107,0.05);
+        }
+
+        .cart-container table.table-hover tbody tr:hover {
+            background-color: rgba(255,107,107,0.1); 
+        }
+
+
+        .cart-container table td, .cart-container table th {
+            vertical-align: middle;
+            padding: 0.75rem 1rem;
+        }
+        .cart-container .btn-danger {
+            border-radius: 0.5rem;
+            padding: 0.25rem 0.75rem;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+            .cart-container .btn-danger:hover {
+                background-color: #dc3545; 
+                transform: translateY(-1px);
+            }
+
+    .cart-total {
+        text-align: right;
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-top: 1rem;
+        color: #333;
+    }
+</style>
+
 @if (Model.Items.Any())
 {
     <table class="table table-striped">
@@ -32,7 +82,13 @@
             }
         </tbody>
     </table>
-    <h3>Total: @Model.Total.ToString("C")</h3>
+    <h3>Total: @Model.Total.ToString()</h3>
+
+    <div class="mt-3">
+        <a asp-controller="Checkout" asp-action="Index" class="btn btn-lg btn-success">
+            Proceed to Checkout
+        </a>
+    </div>
 }
 else
 {

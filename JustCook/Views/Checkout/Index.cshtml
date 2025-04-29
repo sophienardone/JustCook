@@ -1,0 +1,43 @@
+﻿@model JustCook.Models.Cart
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<h1>Checkout</h1>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-warning">@TempData["Message"]</div>
+}
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h4>Your Order</h4>
+        <ul class="list-group mb-3">
+            @foreach (var item in Model.Items)
+            {
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>@item.Product.Name × @item.Quantity</span>
+                    <strong>@(item.UnitPrice * item.Quantity).ToString("C")</strong>
+                </li>
+            }
+            <li class="list-group-item d-flex justify-content-between">
+                <strong>Total</strong>
+                <strong>@Model.Total.ToString("C")</strong>
+            </li>
+        </ul>
+
+        <form asp-action="Confirm" method="post">
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input name="name" id="name" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Shipping Address</label>
+                <textarea name="address" id="address" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Place Order</button>
+            <a asp-controller="Cart" asp-action="Index" class="btn btn-secondary ms-2">Back to Cart</a>
+        </form>
+    </div>
+</div>
