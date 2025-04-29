@@ -1,20 +1,33 @@
-﻿
-
-@{
+﻿@{
     ViewData["Title"] = "Login";
 }
 
 <h2>Login</h2>
 
-<form asp-action="Login" method="post">
-    <input name="email" placeholder="Email" class="form-control mb-2" required />
-    <input name="password" type="password" placeholder="Password" class="form-control mb-2" required />
-    <button type="submit" class="btn btn-primary">Login</button>
+<!-- 1) Local email/password login -->
+<form asp-controller="Account" asp-action="Login" method="post" class="mb-4">
+    <div class="mb-2">
+        <input name="email" placeholder="Email" class="form-control" required />
+    </div>
+    <div class="mb-2">
+        <input name="password" type="password" placeholder="Password" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Login</button>
 </form>
 
+<hr />
 
+<!-- 2) External login options -->
+<h3>Or sign in with</h3>
+<div class="d-grid gap-2">
+    <a class="btn btn-outline-danger" asp-controller="Login" asp-action="LoginWithGoogle">
+        <i class="fab fa-google me-1"></i> Google
+    </a>
+    <a class="btn btn-outline-secondary" asp-controller="Login" asp-action="LoginWithMicrosoft">
+        <i class="fab fa-microsoft me-1"></i> Microsoft
+    </a>
+</div>
 
-
-
-
-
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
