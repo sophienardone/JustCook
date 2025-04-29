@@ -22,35 +22,4 @@
         </div>
     </div>
 
-    <div id="map" style="width:100%; height:500px;"></div>
-
-    <script>
-        function initMap() {
-            const dundalk = { lat: 53.9999772, lng: -6.4037354 }; // Dundalk
-
-            const map = new google.maps.Map(document.getElementById("map"), {
-                center: dundalk,
-                zoom: 14
-            });
-
-            const service = new google.maps.places.PlacesService(map);
-            service.nearbySearch({
-                location: dundalk,
-                radius: 5000,                    
-                type: ["grocery_or_supermarket"] 
-            }, (results, status) => {
-                if (status === google.maps.places.PlacesServiceStatus.OK) {
-
-                    results.forEach(place => {
-                        new google.maps.Marker({
-                            map,
-                            position: place.geometry.location,
-                            title: place.name
-                        });
-                    });
-                }
-            });
-        }
-    </script>
-
 </section>
