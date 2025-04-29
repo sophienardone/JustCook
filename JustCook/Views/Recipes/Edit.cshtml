@@ -4,51 +4,106 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<style>
+    .form-container {
+      margin: 2rem auto;
+      max-width: 600px;
+      background: #fff;
+      border-radius: 1rem;                          
+      padding: 2rem;
+      box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.1);
+    }
 
-<h4>Recipe</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="RecipeId" />
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
+    .form-header {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #ff6b6b;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .form-group.row label {
+      text-align: right;
+    }                                                      
+
+
+    .form-control {
+      border: 1px solid #ddd;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      transition: border-color 0.2s;
+    }
+    .form-control:focus {
+      border-color: #ff6b6b;
+      box-shadow: 0 0 0 0.2rem rgba(255,107,107,0.25);
+    }                                                     
+
+    .text-danger {
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+    }
+
+    .btn-primary {
+      background-color: #ff6b6b;
+      border-color: #ff6b6b;
+      padding: 0.5rem 1.5rem;
+      border-radius: 0.5rem;
+      transition: background-color 0.3s;
+    }
+    .btn-primary:hover {
+      background-color: #f06595;
+    }
+</style>
+
+<div class="form-container">
+    <h1 class="form-header">Edit Recipe</h1>
+    <form asp-action="Edit" method="post">
+        <input type="hidden" asp-for="RecipeId" />
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <div class="form-group row mb-3">
+            <label asp-for="Title" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9">
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
+        </div>
+
+        <div class="form-group row mb-3">
+            <label asp-for="Description" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9">
+                <textarea asp-for="Description" class="form-control"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
+        </div>
+
+        <div class="form-group row mb-3">
+            <label asp-for="ImageUrl" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9">
                 <input asp-for="ImageUrl" class="form-control" />
                 <span asp-validation-for="ImageUrl" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="CreatedAt" class="control-label"></label>
-                <input asp-for="CreatedAt" class="form-control" />
+        </div>
+
+        <div class="form-group row mb-3">
+            <label asp-for="CreatedAt" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9">
+                <input asp-for="CreatedAt" type="datetime-local" class="form-control" />
                 <span asp-validation-for="CreatedAt" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
+        </div>
+
+        <div class="form-group row mb-4">
+            <label asp-for="UserId" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9">
                 <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
                 <span asp-validation-for="UserId" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+        </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a asp-action="Index" class="btn btn-secondary ms-2">Cancel</a>
+        </div>
+    </form>
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

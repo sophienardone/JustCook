@@ -141,7 +141,7 @@
         box-shadow: 0 3px 8px rgba(0,0,0,0.15);
     }
 
-    /* Create Button */
+
     .create-btn {
         background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
         border: none;
@@ -160,7 +160,6 @@
             box-shadow: 0 5px 15px rgba(255,107,107,0.4);
         }
 
-    /* Responsive Design */
     @@media (max-width: 768px) {
         .recipes-container {
             margin: 1rem;
@@ -252,7 +251,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <script>
-        // Add hover effect to entire row
+
         document.querySelectorAll('.recipes-table tbody tr').forEach(row => {
             row.addEventListener('click', (e) => {
                 if (e.target.tagName !== 'A') {
@@ -261,7 +260,7 @@
             });
         });
 
-        // Confirm delete action
+ 
         document.querySelectorAll('.delete-link').forEach(link => {
             link.addEventListener('click', (e) => {
                 if (!confirm('Are you sure you want to delete this recipe?')) {
@@ -270,7 +269,7 @@
             });
         });
 
-        // Initialize tooltips
+   
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })
