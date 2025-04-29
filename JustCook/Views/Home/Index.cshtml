@@ -2,24 +2,112 @@
     ViewData["Title"] = "Home";
 }
 
-<div class="jumbotron text-center my-5">
-    <h1 class="display-4">Welcome to JustCook!</h1>
-    <p class="lead">JustCook is your one-stop solution for managing, discovering, and sharing amazing recipes.</p>
-    <hr class="my-4">
-    <p>Browse our curated collection, add your own recipes, and connect with fellow food enthusiasts.</p>
-    <a class="btn btn-primary btn-lg" href="@Url.Action("Index", "Recipes")" role="button">Explore Recipes</a>
-</div>
+<style>
+    .hero-section {
+        padding: 8rem 0 4rem;
+        background: linear-gradient(45deg, rgba(255,107,107,0.1), rgba(78,205,196,0.1));
+    }
 
-<section class="container my-5">
-    <div class="row">
-        <div class="col-md-6">
-            <h2>Discover New Flavors</h2>
-            <p>Search for recipes that match your taste and dietary preferences. Our platform brings together a variety of cuisines and styles for you to explore.</p>
-        </div>
-        <div class="col-md-6">
-            <h2>Share Your Creations</h2>
-            <p>Create and manage your own recipes easily. Share your secret ingredients and cooking tips with a community that loves food as much as you do.</p>
+    .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: var(--text-color);
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-description {
+        font-size: 1.25rem;
+        color: #636e72;
+        margin-bottom: 2rem;
+    }
+
+    .cta-button {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        border: none;
+        padding: 1rem 2.5rem;
+        border-radius: 30px;
+        color: white;
+        font-weight: 600;
+        transition: transform 0.3s ease;
+    }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255,107,107,0.3);
+        }
+
+    .features-section {
+        padding: 4rem 0;
+    }
+
+    .feature-card {
+        background: white;
+        border-radius: 20px;
+        padding: 2rem;
+        transition: transform 0.3s ease;
+        margin: 1rem;
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--primary-color);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+</style>
+
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">Discover the Joy of Cooking</h1>
+            <p class="hero-description">
+                Join our community of food enthusiasts to share, discover, and create amazing recipes.
+                Whether you're a professional chef or a home cook, JustCook has something for everyone.
+            </p>
+            <a href="@Url.Action("Index", "Recipes")" class="btn cta-button">
+                <i class="fas fa-utensils me-2"></i>Explore Recipes
+            </a>
         </div>
     </div>
+</section>
 
+<section class="features-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search fa-2x text-white"></i>
+                    </div>
+                    <h3>Discover Recipes</h3>
+                    <p class="text-muted">Browse thousands of recipes from around the world, filter by cuisine, dietary needs, or cooking time.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-share-alt fa-2x text-white"></i>
+                    </div>
+                    <h3>Share Your Creations</h3>
+                    <p class="text-muted">Share your unique recipes with our community and get feedback from other food lovers.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
